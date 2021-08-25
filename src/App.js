@@ -19,6 +19,15 @@ import 'material-design-lite/material';
 
 function App() {
 
+  const styles = {
+    navLink : {
+      padding: 10,
+      textTransform: 'uppercase',
+      textDecoration: 'none'
+    }
+    
+  }
+
   console.log(1234.567.toCurrency());
 
   const [state, setState] = useState(store.getState());
@@ -33,7 +42,7 @@ function App() {
     <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header className="mdl-layout__header">
         <div className="mdl-layout__header-row">
-          <a href="/" className="mdl-layout-title">Dinner and a Movie</a>
+          <a href="/" style= {styles.navLink} className="mdl-layout-title">Dinner and a Movie</a>
           <nav className="mdl-navigation mdl-layout--large-screen-only">
             <a href="/account" className="mdl-layout__tab">My account</a>
             <a href="/logout" className="mdl-layout__tab">logout</a>
@@ -59,8 +68,8 @@ function App() {
       <footer>
       </footer>
     </div>
-    <h1>Dinner And A Movie</h1>
-    <LandingPage/>
+    
+    <PickSeats/>
     </div>
   );
 }

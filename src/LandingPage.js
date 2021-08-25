@@ -6,8 +6,53 @@ export function LandingPage(){
 	console.log("Landing Page");
 	const styles = {
 		poster: {
-			height: 500,
-		}
+			maxHeight: '95%',
+			objectFit: 'contain'
+		},
+		header: {
+			width: "95vw",
+			margin: "10px auto",
+			padding: "10px",
+		},
+		filmsWrapper: {
+			display: 'flex',
+			flexWrap: 'wrap',
+		},
+		wrapper: {
+			width: '300px',
+			margin: '30px',
+			cursor: 'pointer',
+		},
+		innerWrapper: {
+			display: 'flex',
+			flexDirection: 'row',
+		},
+		poster: {
+			maxWidth: '95%',
+			objectFit: 'contain',
+		},
+		posterDiv: {
+			flex: '1 1 25%',
+			padding: "5px",
+		},
+		textDiv: {
+			flex: '1 1 25%',
+			padding: "10px 5px 10px 5px",
+		},
+		title: {
+			fontSize: '1.75rem',
+			fontWeight: '900',
+			textTransform: 'uppercase',
+			margin: '2px',
+		},
+		tagline: {
+			margin: '2px',
+			lineHeight: '1em',
+		},
+		runtimeP: {
+			fontSize: "0.75rem",
+			margin: '2px',
+		},
 	};
 	const currentDate = new Date();
 
@@ -38,8 +83,9 @@ export function LandingPage(){
 	        </div>
 	      </div>
 	      <div style={styles.showings}>
-	      	{showings.filter(showing => showing.film_id == film.id).map(filteredShowing => (
-	      		<li>{filteredShowing.showing_time.toShowingDateString()}</li>
+	      	<p>Showing Dates</p>
+	      	{showings.filter(showing => showing.film_id === film.id).map(filteredShowing => (
+	      		<li>{filteredShowing.showing_time.toShowingDateString()}  {  filteredShowing.showing_time.toShowingTimeString()}</li>
 	      	))}
 	      </div>
 	    </section>

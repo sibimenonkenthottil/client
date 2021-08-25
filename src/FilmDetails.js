@@ -6,7 +6,33 @@ export const FilmDetails = () => {
 		poster : {
 			width: 500,
 			height: 500
-		}
+		},
+		container: {
+			width: '95%',
+			margin: '20px 20px',
+			padding: '20px',
+		},
+		poster: {
+			maxWidth: '95%',
+			objectFit: 'contain',
+		},
+		wrapper: {
+			marginTop: '20px',
+		},
+		headline: {
+			fontSize: '1.2em',
+		},
+		showingTimesWrapper: {
+			display: 'flex',
+			flexWrap: 'wrap',
+		},
+		tile: {
+			background: 'black',
+			color: 'white',
+			fontWeight: 'bold',
+			padding: '20px',
+			margin: '10px',
+		},
 	};
 	const state = store.getState();
 	const films = state.films;

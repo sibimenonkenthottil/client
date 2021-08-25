@@ -9,6 +9,13 @@ export const PickSeats = () => {
 	let currentShowing = {id:0, film_id:0, theater_id:0, showing_time:new Date() };
 	let currentFilm = { title: "A Cool Movie" };
 	let currentTheater = { id: 0, name: "Theater #1" };
+	const state = store.getState();
+	const films = state.films;
+	const film = films[1] || {};
+	const theatres = state.theaters;
+	const showings = state.showings;
+	console.log("Theatre:"+ JSON.stringify(theatres));
+	console.log("Showings:"+ JSON.stringify(showings));
 
 	function reserveSeat(seat) {
 		console.log(seat)
@@ -32,7 +39,39 @@ export const PickSeats = () => {
 			justifyContent: "center",
 			borderRadius: "10px 10px 0px 0px",
 		},
-	};
+		header: {
+			width: "95vw",
+			margin: "10px auto",
+			padding: "10px",
+		},
+		tablesSection: {
+			paddingBottom: '40px',
+			display: 'grid',
+			gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+		},
+		wrapper: {
+			margin: "20px",
+		},
+		tableWrapper: {
+			display: 'flex',
+			justifyContent: "center",
+			alignItems: "center",
+		},
+		tableItself: {
+			height: "40px",
+			backgroundColor: "blue",
+			borderRadius: "20px",
+			color: "white",
+			fontSize: "20px",
+			display: 'flex',
+			justifyContent: "center",
+			alignItems: "center",
+		},
+		seatsWrapper: {
+			display: "flex",
+			justifyContent: "center",
+			alignItems: "center",}
+		};
 	return (
 
 		
@@ -41,9 +80,9 @@ export const PickSeats = () => {
 		  <div className="mdl-card__title mdl-color--primary mdl-color-text--white">
 		    <h1 className="mdl-card__title-text">Where would you like to sit?</h1>
 		  </div>
-  		  <p>Watching FILM_TITLE in THEATER_NAME on {currentShowing.showing_time.toShowingDateString()} at {currentShowing.showing_time.toShowingTimeString()}</p>
+  		  <p>Watching {film.title} in THEATER_NAME on {currentShowing.showing_time.toShowingDateString()} at {currentShowing.showing_time.toShowingTimeString()}</p>
 		  <section style={styles.tablesSection}>
-		    <p>LIST OF TABLES WILL GO HERE</p>
+		    <p></p>
 		    <p>Here is one table:</p>
 		    <div style={styles.wrapper}>
 		      <div style={styles.tableWrapper}>
