@@ -13,8 +13,13 @@ import { PickSeats } from './PickSeats';
 
 import 'material-design-lite/dist/material.min.css';
 import 'material-design-lite/dist/material.blue-indigo.min.css';
+import currency from './Currency';
+import { Date } from './Date';
+import 'material-design-lite/material';
 
 function App() {
+
+  console.log(1234.567.toCurrency());
 
   const [state, setState] = useState(store.getState());
   useEffect(() => {
