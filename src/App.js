@@ -11,6 +11,9 @@ import { Account } from './Authentication/Account';
 import { Login } from './Authentication/Login'
 import { PickSeats } from './PickSeats';
 
+import 'material-design-lite/dist/material.min.css';
+import 'material-design-lite/dist/material.blue-indigo.min.css';
+
 function App() {
 
   const [state, setState] = useState(store.getState());
@@ -21,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    /*<div>
+    <div>
     <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header className="mdl-layout__header">
         <div className="mdl-layout__header-row">
@@ -52,9 +55,9 @@ function App() {
       </footer>
     </div>
     <h1>Dinner And A Movie</h1>
-    </div> */
+    </div> 
     //<LandingPage/>
-    <Login/>
+    //<PickSeats/>
   );
 }
 
