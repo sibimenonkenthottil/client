@@ -1,4 +1,4 @@
-export function Checkout(){
+export const Checkout = () => {
 	const styles = {};
 	return (
 		<>

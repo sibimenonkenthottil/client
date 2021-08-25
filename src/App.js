@@ -60,9 +60,8 @@ function App() {
       </footer>
     </div>
     <h1>Dinner And A Movie</h1>
-    </div> 
-    //<LandingPage/>
-    //<PickSeats/>
+    <LandingPage/>
+    </div>
   );
 }
 

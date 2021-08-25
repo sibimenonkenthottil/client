@@ -2,7 +2,7 @@ import seatImage from './bundledImages/seat.png';
 import { store } from './store/store';
 import { actions } from './store/actions';
 
-export function PickSeats(){
+export const PickSeats = () => {
 
 	let table = {id: 0, table_number: 0, x: 1, y: 1, seats: []};
 	let seat = { id: 0, seat_number: 0, price: 10.75 };
@@ -16,6 +16,7 @@ export function PickSeats(){
 	}
 
 	console.log("PickSeats");
+	const currentDate = new Date();
 	const styles = {
 		seatWrapper: {
 			margin: "5px",
@@ -40,18 +41,18 @@ export function PickSeats(){
 		  <div className="mdl-card__title mdl-color--primary mdl-color-text--white">
 		    <h1 className="mdl-card__title-text">Where would you like to sit?</h1>
 		  </div>
-  		  <p>Watching FILM_TITLE in THEATER_NAME on SHOWING_DATE at SHOWING_TIME</p>
+  		  <p>Watching FILM_TITLE in THEATER_NAME on {currentShowing.showing_time.toShowingDateString()} at {currentShowing.showing_time.toShowingTimeString()}</p>
 		  <section style={styles.tablesSection}>
 		    <p>LIST OF TABLES WILL GO HERE</p>
 		    <p>Here is one table:</p>
 		    <div style={styles.wrapper}>
 		      <div style={styles.tableWrapper}>
-		        <div style={{ ...styles.tableItself }}>TABLE_NUMBER_HERE</div>
+		        <div style={{ ...styles.tableItself }}>{table.table_number}</div>
 		      </div>
 		      <div style={styles.seatsWrapper}>
 		        <div style={styles.seatWrapper}>
 					<div style={{...styles.seatItself }} onClick={(seat) => reserveSeat(seat)}>
-					#
+						{seat.seat_number}
 					</div>
 				</div>
 		      </div>
