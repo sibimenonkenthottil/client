@@ -31,6 +31,7 @@ function App() {
   console.log(1234.567.toCurrency());
 
   const [state, setState] = useState(store.getState());
+  
   useEffect(() => {
     const unsubscribe = store.subscribe(() => setState({ ...store.getState() }));
     store.dispatch(actions.fetchInitialData());
@@ -69,7 +70,7 @@ function App() {
       </footer>
     </div>
     
-    <PickSeats/>
+    <Login/>
     </div>
   );
 }
