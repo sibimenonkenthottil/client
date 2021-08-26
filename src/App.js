@@ -10,6 +10,7 @@ import { Checkout } from './Checkout';
 import { Account } from './Authentication/Account';
 import { Login } from './Authentication/Login'
 import { PickSeats } from './PickSeats';
+import { navLink } from 'react-dom';
 
 import 'material-design-lite/dist/material.min.css';
 import 'material-design-lite/dist/material.blue-indigo.min.css';
@@ -31,7 +32,7 @@ function App() {
   console.log(1234.567.toCurrency());
 
   const [state, setState] = useState(store.getState());
-  
+  console.log(JSON.stringify(state.user));
   useEffect(() => {
     const unsubscribe = store.subscribe(() => setState({ ...store.getState() }));
     store.dispatch(actions.fetchInitialData());
@@ -45,11 +46,11 @@ function App() {
         <div className="mdl-layout__header-row">
           <a href="/" style= {styles.navLink} className="mdl-layout-title">Dinner and a Movie</a>
           <nav className="mdl-navigation mdl-layout--large-screen-only">
-            <a href="/account" className="mdl-layout__tab">My account</a>
-            <a href="/logout" className="mdl-layout__tab">logout</a>
-            <a href="/checkout" className="mdl-layout__tab"><i className="material-icons">shopping_cart</i></a>
-            <a href="/login" className="mdl-layout__tab">Login</a>
-            <a href="/register" className="mdl-layout__tab">Register</a>
+            {state.user && <navLink href="/account" className="mdl-layout__tab">My account</navLink>}
+            {state.user && <navLink href="/logout" className="mdl-layout__tab">logout</navLink>}
+            {state.user && <a href="/checkout" className="mdl-layout__tab"><i className="material-icons">shopping_cart</i></a>}
+            {!state.user && <a href="/login" className="mdl-layout__tab">Login</a>}
+            {!state.user && <navLink to="/account" className="mdl-layout__tab">Register</navLink>}
           </nav>
         </div>
       </header>
@@ -64,13 +65,13 @@ function App() {
         </nav>
       </div>
       <main className="mdl-layout__content">
-
+          <Login/>
       </main>
       <footer>
       </footer>
     </div>
     
-    <Login/>
+    
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import seatImage from './bundledImages/seat.png';
 import { store } from './store/store';
 import { actions } from './store/actions';
+import { useEffect } from 'react';
 
 export const PickSeats = () => {
 
@@ -16,11 +17,16 @@ export const PickSeats = () => {
 	const showings = state.showings;
 	console.log("Theatre:"+ JSON.stringify(theatres));
 	console.log("Showings:"+ JSON.stringify(showings));
+	const showingId = 1;
 
 	function reserveSeat(seat) {
 		console.log(seat)
 		store.dispatch(actions.addSeatToCart(seat, currentShowing));
 	}
+
+	useEffect(() => {
+		store.dispatch(actions.fetchReservationsForShowing(showingId));
+	}, [showingId]);
 
 	console.log("PickSeats");
 	const currentDate = new Date();
