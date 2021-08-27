@@ -1,5 +1,6 @@
 import { store } from './store/store'
 import PickDate from './PickDate'
+import FilmBrief from './FilmBrief';
 
 export function LandingPage() {
 
@@ -20,7 +21,7 @@ export function LandingPage() {
 			flexWrap: 'wrap',
 		},
 		wrapper: {
-			width: '300px',
+			width: '1000px',
 			margin: '30px',
 			cursor: 'pointer',
 		},
@@ -70,8 +71,7 @@ export function LandingPage() {
 
 	const state = store.getState();
 	const films = state.films;
-	const showings = state.showings;
-	let showingDates = Date.getArrayOfDays(7);
+	const showings = state.showings;	
 	console.log("showing" + JSON.stringify(showings));
 	console.log("Films" + JSON.stringify(films));
 	return (
@@ -82,29 +82,7 @@ export function LandingPage() {
 				</div>
 			</section>
 			{films.map(film => (
-
-				<section key={film.id} style={styles.filmsWrapper}>
-					<section style={styles.wrapper} className="mdl-card mdl-shadow--2dp">
-						<div style={styles.innerWrapper}>
-							<div style={styles.posterDiv}>
-								<img src='/img/posters/1.jpg' alt="" style={styles.poster} />
-							</div>
-							<div style={styles.textDiv}>
-								<p style={styles.title}>{film.title}</p>
-								<p style={styles.runtimeP}>{film.runtime}</p>
-								<p style={styles.tagline}>{film.tagline}</p>
-							</div>
-						</div>
-						<div style={styles.showings}>
-							<PickDate showingDates={showingDates}/>
-						</div>
-					</section>
-				</section>
-
-
-
-
-
+				<FilmBrief film = {film} showings = {showings} currentDate={currentDate} key={film.id} showingDates = {Date.getArrayOfDays(7)}/>
 			))}
 
 		</>

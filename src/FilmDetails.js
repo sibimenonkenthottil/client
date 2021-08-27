@@ -1,5 +1,6 @@
 import { store } from './store/store'
 import PickDate from './PickDate';
+import ShowingTimes from './ShowingTimes';
 
 export const FilmDetails = () => {
 	console.log("FilmDetails");
@@ -38,8 +39,10 @@ export const FilmDetails = () => {
 	const state = store.getState();
 	const films = state.films;
 	const film = films[1] || {};
-	const showing = state.showing;
+	const showings = state.showings;
 	let showingDates = Date.getArrayOfDays(7);
+	const currentDate = new Date();
+	console.log("Showing "+ JSON.stringify(showings));
 	return (
 		<>
 		  <div style={{ ...styles.container }} className='mdl-card mdl-shadow--2dp'>
@@ -58,7 +61,9 @@ export const FilmDetails = () => {
 		        <p>Released: {film.release_date}</p>
 		        <p>Runtime minutes</p>
 		        <a href="HOMEPAGE" target="movie_site">{film.homepage}</a>
-		        	<PickDate showingDates={showingDates}/>
+											
+						<ShowingTimes showings = {showings} currentDate = {currentDate} currentFilm={film}/>
+					
 		      </div>
 		    </div>
 		  </div>

@@ -66,7 +66,7 @@ function App() {
         </nav>
       </div>
       <main className="mdl-layout__content">
-          <FilmDetails/>
+          <Account/>
       </main>
       <footer>
       </footer>
