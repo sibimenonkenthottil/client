@@ -1,23 +1,24 @@
 import { store } from '../store/store';
 import { actions } from '../store/actions';
 import { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
 
 export function Login(){
 
 	function login(e){
 		e.preventDefault();
 		console.log("Login");
-		store.dispatch(actions.login({
-			email: e.target['email'].value,
-			password: e.target['password'].value }));
+		store.dispatch(actions.login(
+			e.target['email'].value,
+			e.target['password'].value ));
 	}
 
   const [showPassword, setShowPassword] = useState(false);
 
 	const styles = {
-    showHidePasswordBtn : {
-      padddingLeft: 20
-    }
+    
   };
 	return (
 		<section style={styles.wrapper} className="mdl-card mdl-shadow--2dp">
