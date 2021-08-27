@@ -1,6 +1,6 @@
 import { store } from './store/store'
 
-export function LandingPage(){
+export function LandingPage() {
 
 
 	console.log("Landing Page");
@@ -53,6 +53,16 @@ export function LandingPage(){
 			fontSize: "0.75rem",
 			margin: '2px',
 		},
+		pickDateWrapper: {
+			backgroundColor: 'rgba(0,0,0,0.1)',
+			padding: '1em',
+		},
+		days: {
+			color: 'rgba(0,0,0,0.75)',
+			fontSize: '1.2em',
+			padding: '1em',
+			cursor: 'pointer',
+		}
 	};
 	const currentDate = new Date();
 
@@ -60,37 +70,51 @@ export function LandingPage(){
 	const state = store.getState();
 	const films = state.films;
 	const showings = state.showings;
-	const film = films[1] || {};
+	let showingDates = Date.getArrayOfDays(7);
 	console.log("showing" + JSON.stringify(showings));
-	console.log("Film "+ JSON.stringify(film));
+	console.log("Films" + JSON.stringify(films));
 	return (
-	<>
-	  <section style={styles.header} className="mdl-card mdl-shadow--2dp">
-	    <div className="mdl-card__title">
-	      <span className="mdl-card__title-text">Showings for {currentDate.toShowingDateString()}</span>
-	    </div>
-	  </section>
-	  <section style={styles.filmsWrapper}>
-	    <section style={styles.wrapper} className="mdl-card mdl-shadow--2dp">
-	      <div style={styles.innerWrapper}>
-	        <div style={styles.posterDiv}>
-	          <img src='/img/posters/1.jpg' alt="" style={styles.poster} />
-	        </div>
-	        <div style={styles.textDiv}>
-	          <p style={styles.title}>{film.title}</p>
-	          <p style={styles.runtimeP}>{film.runtime}</p>
-	          <p style={styles.tagline}>{film.tagline}</p>
-	        </div>
-	      </div>
-	      <div style={styles.showings}>
-	      	<p>Showing Dates</p>
-	      	{showings.filter(showing => showing.film_id === film.id).map(filteredShowing => (
-	      		<li>{filteredShowing.showing_time.toShowingDateString()}  {  filteredShowing.showing_time.toShowingTimeString()}</li>
-	      	))}
-	      </div>
-	    </section>
-	  </section>
-	</>
+		<>
+			<section style={styles.header} className="mdl-card mdl-shadow--2dp">
+				<div className="mdl-card__title">
+					<span className="mdl-card__title-text">Showings for {currentDate.toShowingDateString()}</span>
+				</div>
+			</section>
+			{films.map(film => (
+
+				<section key={film.id} style={styles.filmsWrapper}>
+					<section style={styles.wrapper} className="mdl-card mdl-shadow--2dp">
+						<div style={styles.innerWrapper}>
+							<div style={styles.posterDiv}>
+								<img src='/img/posters/1.jpg' alt="" style={styles.poster} />
+							</div>
+							<div style={styles.textDiv}>
+								<p style={styles.title}>{film.title}</p>
+								<p style={styles.runtimeP}>{film.runtime}</p>
+								<p style={styles.tagline}>{film.tagline}</p>
+							</div>
+						</div>
+						<div style={styles.showings}>
+							<div style={styles.pickDateWrapper}>
+								{showingDates.map(showingDate => (
+									<span
+										style={styles.days}
+										key={showingDate.getTime()}>
+										{showingDate.toShortDayOfWeekString()}
+									</span>
+								))}
+							</div>
+						</div>
+					</section>
+				</section>
+
+
+
+
+
+			))}
+
+		</>
 
 	);
 }
