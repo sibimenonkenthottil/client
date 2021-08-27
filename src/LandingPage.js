@@ -1,4 +1,5 @@
 import { store } from './store/store'
+import PickDate from './PickDate'
 
 export function LandingPage() {
 
@@ -95,15 +96,7 @@ export function LandingPage() {
 							</div>
 						</div>
 						<div style={styles.showings}>
-							<div style={styles.pickDateWrapper}>
-								{showingDates.map(showingDate => (
-									<span
-										style={styles.days}
-										key={showingDate.getTime()}>
-										{showingDate.toShortDayOfWeekString()}
-									</span>
-								))}
-							</div>
+							<PickDate showingDates={showingDates}/>
 						</div>
 					</section>
 				</section>

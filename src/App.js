@@ -24,7 +24,8 @@ function App() {
     navLink : {
       padding: 10,
       textTransform: 'uppercase',
-      textDecoration: 'none'
+      textDecoration: 'solid',
+      color: 'black'
     }
     
   }
@@ -65,7 +66,7 @@ function App() {
         </nav>
       </div>
       <main className="mdl-layout__content">
-          <PickSeats/>
+          <FilmDetails/>
       </main>
       <footer>
       </footer>
