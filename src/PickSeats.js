@@ -17,7 +17,7 @@ export const PickSeats = () => {
 	const showings = state.showings;
 	console.log("Theatre:" + JSON.stringify(theatres));
 	console.log("Showings:" + JSON.stringify(showings));
-	const showingId = 1;
+	const showingId = 3;
 	if (state.showings && state.showings.length) {
 		currentShowing = state.showings.find(showing => showing.id === +showingId);
 		currentFilm = state.films.find(film => film.id === currentShowing.film_id);
@@ -86,6 +86,17 @@ export const PickSeats = () => {
 			display: "flex",
 			justifyContent: "center",
 			alignItems: "center",
+		},
+		filmFont: {
+			fontSize: "20px",
+			color: "blue"
+		},
+		filmTimeFont: {
+			fontSize: "20px",
+			color: "red"
+		},
+		sectionWrapper: {
+			paddingTop: "10px"
 		}
 	};
 	return (
@@ -96,10 +107,9 @@ export const PickSeats = () => {
 				<div className="mdl-card__title mdl-color--primary mdl-color-text--white">
 					<h1 className="mdl-card__title-text">Where would you like to sit?</h1>
 				</div>
-				<p>Watching {film.title} in THEATER_NAME on {currentShowing.showing_time.toShowingDateString()} at {currentShowing.showing_time.toShowingTimeString()}</p>
-				<section style={styles.tablesSection}>
 
-					<p>List of tables goes here</p>
+				<p><span style={styles.filmFont}>{film.title}</span> in  <span style= {styles.filmFont}>{currentTheater.name}</span> on  <span style={styles.filmTimeFont}>{currentShowing.showing_time.toShowingDateString()} at {currentShowing.showing_time.toShowingTimeString()}</span></p>
+				<section style={styles.tablesSection}>
 					{tables && tables.map(table => (
 						<div style={styles.wrapper}>
 							<div style={styles.tableWrapper}>
